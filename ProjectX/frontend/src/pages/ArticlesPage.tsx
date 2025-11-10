@@ -24,11 +24,11 @@ const ArticlesPage: React.FC = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <div className="text-center" style={{ marginTop: '64px', marginBottom: '64px', paddingLeft: '32px', paddingRight: '32px' }}>
+      <div className="text-center px-4 sm:px-8 mt-8 sm:mt-12 lg:mt-16 mb-8 sm:mb-12 lg:mb-16">
         <Typography variant="h1" className="text-primary-black mb-4">
           Articles & Case Studies
         </Typography>
-        <Typography variant="body" className="text-gray-600 max-w-2xl mx-auto">
+        <Typography variant="body" className="text-gray-600 max-w-2xl mx-auto px-4">
           Explore in-depth articles, case studies, and expert insights on technology trends and innovations.
         </Typography>
       </div>
@@ -52,16 +52,7 @@ const ArticlesPage: React.FC = () => {
       {/* Articles Grid */}
       {!loading && !error && articles.length > 0 && (
         <>
-          <div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-8"
-            style={{ 
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '40px',
-              margin: '0 48px',
-              marginBottom: '48px'
-            }}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4 sm:px-8 lg:px-12 mb-8 sm:mb-12">
             {paginatedArticles.map((article) => (
               <ArticleCardSimple
                 key={article.id}
@@ -73,21 +64,16 @@ const ArticlesPage: React.FC = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center items-center" style={{ marginTop: '32px', marginBottom: '64px', gap: '12px' }}>
+            <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-8 mb-12 sm:mb-16 px-4">
               {/* Previous Button */}
               <button
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
-                className="transition-colors"
-                style={{
-                  padding: '8px 16px',
-                  border: '1px solid #e5e5e5',
-                  borderRadius: '6px',
-                  backgroundColor: currentPage === 1 ? '#f5f5f5' : '#ffffff',
-                  color: currentPage === 1 ? '#a3a3a3' : '#1a1a1a',
-                  cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                  fontWeight: '500',
-                }}
+                className={`px-3 sm:px-4 py-2 border border-gray-200 rounded-md font-medium text-sm sm:text-base transition-colors ${
+                  currentPage === 1
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white text-gray-900 hover:bg-gray-50 cursor-pointer'
+                }`}
               >
                 Previous
               </button>
@@ -97,17 +83,11 @@ const ArticlesPage: React.FC = () => {
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
-                  className="transition-colors"
-                  style={{
-                    padding: '8px 12px',
-                    border: '1px solid #e5e5e5',
-                    borderRadius: '6px',
-                    backgroundColor: currentPage === page ? '#1a1a1a' : '#ffffff',
-                    color: currentPage === page ? '#ffffff' : '#1a1a1a',
-                    cursor: 'pointer',
-                    fontWeight: currentPage === page ? '600' : '500',
-                    minWidth: '40px',
-                  }}
+                  className={`px-3 sm:px-4 py-2 border border-gray-200 rounded-md font-medium text-sm sm:text-base min-w-[40px] transition-colors ${
+                    currentPage === page
+                      ? 'bg-gray-900 text-white'
+                      : 'bg-white text-gray-900 hover:bg-gray-50'
+                  }`}
                 >
                   {page}
                 </button>
@@ -117,16 +97,11 @@ const ArticlesPage: React.FC = () => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
-                className="transition-colors"
-                style={{
-                  padding: '8px 16px',
-                  border: '1px solid #e5e5e5',
-                  borderRadius: '6px',
-                  backgroundColor: currentPage === totalPages ? '#f5f5f5' : '#ffffff',
-                  color: currentPage === totalPages ? '#a3a3a3' : '#1a1a1a',
-                  cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-                  fontWeight: '500',
-                }}
+                className={`px-3 sm:px-4 py-2 border border-gray-200 rounded-md font-medium text-sm sm:text-base transition-colors ${
+                  currentPage === totalPages
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-white text-gray-900 hover:bg-gray-50 cursor-pointer'
+                }`}
               >
                 Next
               </button>
