@@ -12,9 +12,7 @@ export { default as DevelopmentNotice } from './ui/DevelopmentNotice.tsx';
 
 // Card Components
 export { default as UpdateCard } from './cards/UpdateCard.tsx';
-export { default as UpdateCardDemo } from './cards/UpdateCardDemo.tsx';
 export { default as ArticleCard } from './cards/ArticleCard.tsx';
-export { default as ArticleCardDemo } from './cards/ArticleCardDemo.tsx';
 
 // Auth Components
 export { default as ProtectedRoute } from './ProtectedRoute.tsx';

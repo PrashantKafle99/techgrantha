@@ -180,7 +180,7 @@ export function UpdateManagementPage() {
     }
   };
 
-  const handleImageUpload = (url: string, publicId: string) => {
+  const handleImageUpload = (url: string) => {
     setFormData(prev => ({ ...prev, thumbnail_url: url }));
   };
 
