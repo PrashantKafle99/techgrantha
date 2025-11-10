@@ -32,10 +32,9 @@ const ArticleCardSimple: React.FC<ArticleCardSimpleProps> = ({ article, onClick 
 
   return (
     <article
-      className={`update-card bg-white overflow-hidden cursor-pointer transition-all duration-300 group ${
+      className={`update-card bg-white overflow-hidden cursor-pointer transition-all duration-300 group w-full ${
         onClick ? 'hover:shadow-xl' : ''
       }`}
-      style={{ maxWidth: '100%', width: '100%' }}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={onClick ? 0 : undefined}
@@ -43,16 +42,12 @@ const ArticleCardSimple: React.FC<ArticleCardSimpleProps> = ({ article, onClick 
       aria-label={onClick ? `Read article: ${article.title}` : undefined}
     >
       {/* Banner Image */}
-      <div 
-        className="overflow-hidden bg-gray-100 w-full"
-        style={{ aspectRatio: '16/9', borderRadius: '8px 8px 0 0' }}
-      >
+      <div className="overflow-hidden bg-gray-100 w-full rounded-t-lg" style={{ aspectRatio: '16/9' }}>
         <img
           src={article.featured_image}
           alt={article.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           loading="lazy"
-          style={{ borderRadius: '8px 8px 0 0', display: 'block' }}
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.src =
@@ -62,36 +57,24 @@ const ArticleCardSimple: React.FC<ArticleCardSimpleProps> = ({ article, onClick 
       </div>
 
       {/* Content */}
-      <div className="p-6" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
+      <div className="p-4 sm:p-6">
         {/* Title */}
-        <h3 
-          className="text-xl font-serif font-normal text-gray-900 mb-3 line-clamp-2 group-hover:text-gray-700 transition-colors"
-          style={{ padding: '2px' }}
-        >
+        <h3 className="text-lg sm:text-xl font-serif font-normal text-gray-900 mb-2 sm:mb-3 line-clamp-2 group-hover:text-gray-700 transition-colors">
           {article.title}
         </h3>
 
         {/* Summary */}
-        <p 
-          className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4"
-          style={{ padding: '2px' }}
-        >
+        <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed mb-3 sm:mb-4">
           {article.excerpt || article.content?.substring(0, 100)}
         </p>
 
         {/* Date and Author */}
-        <div className="flex items-center justify-between" style={{ marginTop: '12px', paddingLeft: '8px', paddingRight: '8px' }}>
-          <time 
-            className="text-xs text-gray-500 uppercase tracking-wide"
-            style={{ padding: '2px' }}
-          >
+        <div className="flex items-center justify-between mt-3 text-xs">
+          <time className="text-gray-500 uppercase tracking-wide">
             {formatDate(article.created_at)}
           </time>
           {article.author && (
-            <span 
-              className="text-xs text-gray-700 font-medium"
-              style={{ padding: '2px' }}
-            >
+            <span className="text-gray-700 font-medium">
               {article.author}
             </span>
           )}

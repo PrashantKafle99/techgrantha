@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <div className="text-center px-4 sm:px-8" style={{ marginTop: '48px', marginBottom: '48px' }}>
+      <div className="text-center px-4 sm:px-8 mt-8 sm:mt-12 lg:mt-16 mb-8 sm:mb-12 lg:mb-16">
         <Typography variant="h1" className="text-primary-black mb-4">
           Today's Mix
         </Typography>
@@ -49,11 +49,11 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Daily Tech Section */}
-      <section style={{ marginBottom: '100px', paddingLeft: '48px', paddingRight: '48px' }}>
-        <h2 className="font-serif text-gray-900" style={{ fontSize: '2rem', fontWeight: '400', marginBottom: '48px' }}>
+      <section className="mb-16 sm:mb-24 px-4 sm:px-8 lg:px-12">
+        <h2 className="font-serif text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-normal mb-8 sm:mb-12">
           Daily Tech
         </h2>
-        <div style={{ marginBottom: '48px' }}>
+        <div className="mb-8 sm:mb-12">
           {latestUpdates.map((update) => (
             <DailyTechCard
               key={update.id}
@@ -73,19 +73,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Articles Section */}
-      <section style={{ marginBottom: '100px', paddingLeft: '48px', paddingRight: '48px' }}>
-        <h2 className="font-serif text-gray-900" style={{ fontSize: '2rem', fontWeight: '400', marginBottom: '48px' }}>
+      <section className="mb-16 sm:mb-24 px-4 sm:px-8 lg:px-12">
+        <h2 className="font-serif text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-normal mb-8 sm:mb-12">
           Articles
         </h2>
-        <div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          style={{ 
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '40px',
-            marginBottom: '48px'
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {latestArticles.map((article) => (
             <ArticleCardSimple
               key={article.id}

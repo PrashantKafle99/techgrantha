@@ -31,7 +31,7 @@ const DailyTechCard: React.FC<DailyTechCardProps> = ({ update, onClick }) => {
 
   return (
     <article
-      className={`flex gap-6 p-8 bg-white cursor-pointer transition-all duration-200 ${
+      className={`flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-6 lg:p-8 bg-white cursor-pointer transition-all duration-200 mb-4 sm:mb-5 border border-gray-200 rounded-lg ${
         onClick ? 'hover:bg-gray-50' : ''
       }`}
       onClick={handleClick}
@@ -39,31 +39,13 @@ const DailyTechCard: React.FC<DailyTechCardProps> = ({ update, onClick }) => {
       tabIndex={onClick ? 0 : undefined}
       role={onClick ? 'button' : undefined}
       aria-label={onClick ? `Read update: ${update.title}` : undefined}
-      style={{ marginBottom: '20px', border: '1px solid #e5e5e5', borderRadius: '8px' }}
     >
-      {/* Thumbnail - Larger Size */}
-      <div 
-        className="flex-shrink-0 overflow-hidden" 
-        style={{ 
-          borderRadius: '8px',
-          width: '240px',
-          height: '160px',
-          minWidth: '240px',
-          minHeight: '160px',
-          maxWidth: '240px',
-          maxHeight: '160px',
-        }}
-      >
+      {/* Thumbnail */}
+      <div className="flex-shrink-0 overflow-hidden rounded-lg w-full sm:w-48 lg:w-60" style={{ aspectRatio: '3/2' }}>
         <img
           src={update.thumbnail_url}
           alt={update.title}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            display: 'block',
-          }}
-          className="transition-transform duration-300 hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           loading="lazy"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
@@ -73,27 +55,21 @@ const DailyTechCard: React.FC<DailyTechCardProps> = ({ update, onClick }) => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 min-w-0" style={{ paddingLeft: '20px' }}>
+      <div className="flex-1 min-w-0">
         {/* Date Badge */}
-        <div className="mb-3">
+        <div className="mb-2 sm:mb-3">
           <span className="text-xs font-medium text-accent-red uppercase tracking-wide">
             {formatDate(update.created_at)}
           </span>
         </div>
 
         {/* Title */}
-        <h4 
-          className="text-primary-black mb-3 line-clamp-2 hover:text-accent-red transition-colors font-serif"
-          style={{ fontSize: '1.125rem', fontWeight: '400' }}
-        >
+        <h4 className="text-primary-black text-base sm:text-lg mb-2 sm:mb-3 line-clamp-2 hover:text-accent-red transition-colors font-serif font-normal">
           {update.title}
         </h4>
 
         {/* Summary */}
-        <p 
-          className="text-gray-600 line-clamp-2"
-          style={{ fontSize: '0.9375rem', lineHeight: '1.6' }}
-        >
+        <p className="text-gray-600 text-sm sm:text-base line-clamp-2 sm:line-clamp-3 leading-relaxed">
           {update.summary}
         </p>
       </div>
