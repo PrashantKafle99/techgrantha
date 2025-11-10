@@ -91,12 +91,11 @@ const ArticleDetailPage: React.FC = () => {
 
   return (
     <Layout>
-      <article className="max-w-5xl mx-auto" style={{ paddingTop: '32px', paddingBottom: '64px', paddingLeft: '48px', paddingRight: '48px' }}>
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         {/* Back Button */}
         <button
           onClick={() => navigate('/article')}
-          className="btn-primary inline-flex items-center px-6 py-3 text-base font-medium rounded-md"
-          style={{ marginBottom: '32px' }}
+          className="btn-primary inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium rounded-md mb-6 sm:mb-8"
         >
           <svg
             className="w-4 h-4 mr-2"
@@ -115,11 +114,8 @@ const ArticleDetailPage: React.FC = () => {
         </button>
 
         {/* Banner Image */}
-        <div className="mb-6">
-          <div
-            className="overflow-hidden bg-gray-100"
-            style={{ borderRadius: '12px', height: '400px' }}
-          >
+        <div className="mb-6 sm:mb-8">
+          <div className="overflow-hidden bg-gray-100 rounded-lg sm:rounded-xl" style={{ aspectRatio: '16/9' }}>
             <img
               src={article.featured_image}
               alt={article.title}
@@ -139,8 +135,8 @@ const ArticleDetailPage: React.FC = () => {
         </div>
 
         {/* Meta Information - Below Image */}
-        <div className="mb-8" style={{ paddingLeft: '4px' }}>
-          <time className="text-sm text-gray-500 uppercase tracking-wide block mb-2">
+        <div className="mb-6 sm:mb-8">
+          <time className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide block mb-2">
             {formatDate(article.created_at)}
           </time>
           {article.author && (
@@ -151,31 +147,18 @@ const ArticleDetailPage: React.FC = () => {
         </div>
 
         {/* Article Header */}
-        <header className="mb-8">
-          <h1
-            className="font-serif text-gray-900"
-            style={{ fontSize: '2.5rem', lineHeight: '1.2', fontWeight: '400', marginBottom: '24px' }}
-          >
+        <header className="mb-6 sm:mb-8">
+          <h1 className="font-serif text-gray-900 text-2xl sm:text-3xl lg:text-4xl leading-tight font-normal">
             {article.title}
           </h1>
         </header>
 
         {/* Article Body */}
-        <div
-          className="prose prose-lg max-w-none"
-          style={{
-            fontSize: '1.125rem',
-            lineHeight: '1.8',
-            color: '#374151',
-          }}
-        >
+        <div className="prose prose-base sm:prose-lg max-w-none text-gray-700">
           {(article.content || article.body || '').split('\n\n').map((paragraph, index) => (
             <p
               key={index}
-              style={{
-                marginBottom: '1.5rem',
-                textAlign: 'justify',
-              }}
+              className="mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed text-left"
             >
               {paragraph}
             </p>
@@ -184,21 +167,11 @@ const ArticleDetailPage: React.FC = () => {
 
         {/* Related Articles Section */}
         {relatedArticles.length > 0 && (
-          <section style={{ marginTop: '80px' }}>
-            <h2 
-              className="font-serif text-gray-900"
-              style={{ fontSize: '2rem', fontWeight: '400', marginBottom: '48px' }}
-            >
+          <section className="mt-12 sm:mt-16 lg:mt-20">
+            <h2 className="font-serif text-gray-900 text-2xl sm:text-3xl font-normal mb-8 sm:mb-12">
               More Articles
             </h2>
-            <div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              style={{ 
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '32px'
-              }}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {relatedArticles.map((relatedArticle) => (
                 <ArticleCardSimple
                   key={relatedArticle.id}
