@@ -59,10 +59,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
+// Start server - bind to 0.0.0.0 to accept external connections
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/health`);
+  console.log(`📍 External: http://neuralcampus.com:${PORT}/health`);
   console.log(`🔐 Admin login: http://localhost:${PORT}/api/admin/login`);
 });
 

@@ -142,7 +142,7 @@ export function ArticleManagementPage() {
       // Allow null author if not provided
       const articleData = {
         ...formData,
-        author: formData.author.trim() || null
+        author: formData.author?.trim() || null
       };
 
       const url = editingArticle 
